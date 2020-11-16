@@ -1,0 +1,45 @@
+import React, { FC } from 'react';
+import { BookInfo } from '../../typings/BookInfo';
+
+export const SearchResultsList: FC<SearchResultsListProps> = ({
+  searchResults,
+  isLoading,
+}) => (
+  <div className="columns is-multiline">
+    {isLoading && <h1>Loading...</h1>}
+
+    {searchResults.map((book) => (
+      <div
+        key={book.id}
+        className="column is-half-tablet is-one-third-widescreen"
+      >
+        <a className="box is-radiusless" href="/">
+          <article className="media">
+            <div className="media-left">
+              <figure className="image">
+                <img src={book.url_small} alt={book.title} />
+              </figure>
+            </div>
+
+            <div className="media-content">
+              <div className="content">
+                <p>
+                  <strong className="title is-5">{book.title}</strong>
+                  <br />
+                  <span>{book.author}</span>
+                  <br />
+                  <span>{book.year}</span>
+                </p>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+    ))}
+  </div>
+);
+
+interface SearchResultsListProps {
+  searchResults: BookInfo[];
+  isLoading: boolean;
+}
