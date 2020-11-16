@@ -1,22 +1,48 @@
-import React, { FC, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { useBook } from './useBook';
-import { SearchResultsAPI } from '../../typings/SearchResultsAPI';
-import { Header } from '../Header/Header';
-import { BookInfo } from './BookInfo';
+import { BookCarousel } from '../BookCarousel/BookCarousel';
+import css from './Book.module.css';
 
-export const Book: FC<BookProps> = ({ getSearchResults }) => {
-  const bookAPI = useBook();
+export function Book(): JSX.Element {
+  const { book, isLoadingBookResults } = useBook();
 
   return (
     <Fragment>
-      <Header onTermChange={getSearchResults} />
-      <div className="container py-5">
-        <BookInfo {...bookAPI} />
+      <div className="px-4">
+        {isLoadingBookResults && <h1>Loading...</h1>}
+
+        <div className="is-flex">
+          <img src={book.image_url} alt={book.title} />
+
+          <div className="ml-5">
+            <h2
+              className="title is-3 has-text-weight-bold"
+              dangerouslySetInnerHTML={{ __html: book.title }}
+            />
+            <p className="subtitle is-5 mb-1">{book.year}</p>
+            <p className="subtitle is-6">{book.rating}</p>
+          </div>
+        </div>
+
+        <Link
+          className="is-flex is-align-items-center mt-5"
+          to={`/author/${book.author_id}`}
+        >
+          <div
+            style={{ backgroundImage: `url(${book.author_image_url})` }}
+            className={`${css['author-image']} mr-4`}
+          />
+          <p className="subtitle is-5 has-text-weight-bold">{book.author}</p>
+        </Link>
+
+        <div
+          className="mt-5 is-size-5"
+          dangerouslySetInnerHTML={{ __html: book.description }}
+        />
       </div>
+
+      <BookCarousel books={book.similar_books} label="Similar Books" />
     </Fragment>
   );
-};
-
-interface BookProps {
-  getSearchResults: SearchResultsAPI['getSearchResults'];
 }

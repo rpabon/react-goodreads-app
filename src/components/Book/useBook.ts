@@ -14,6 +14,12 @@ const BOOK_QUERY = gql`
       author_id
       author_image_url
       description
+      similar_books {
+        id
+        title
+        image_url
+        year
+      }
     }
   }
 `;
