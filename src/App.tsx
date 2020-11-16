@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useSearchResults } from './components/SearchResultsList/useSearchResults';
-import { Home } from './components/Home/Home';
-import { Book } from './components/Book/Book';
-import { Author } from './components/Author/Author';
-import { Header } from './components/Header/Header';
+import { useSearchResults } from './hooks/useSearchResults';
+import { Home } from './components/Home';
+import { Book } from './components/Book';
+import { Author } from './components/Author';
+import { Header } from './components/Header';
 import 'bulma/css/bulma.css';
 import './App.css';
 

@@ -1,8 +1,7 @@
 import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo';
-import { useParams } from 'react-router-dom';
-import { Book } from '../../typings/Book';
-import { BookResultsAPI } from '../../typings/BookResultsAPI';
+import { Book } from '../typings/Book';
+import { BookResultsAPI } from '../typings/BookResultsAPI';
+import { useQueryById } from './useQueryById';
 
 const BOOK_QUERY = gql`
   query BookQuery($id: Int) {
@@ -25,14 +24,7 @@ const BOOK_QUERY = gql`
 `;
 
 export function useBook(): BookResultsAPI {
-  const params = useParams<{ id?: string }>();
-  const id = params && params.id ? parseInt(params.id, 10) : 0;
-
-  const { loading, data, error } = useQuery<{ book: Book }>(BOOK_QUERY, {
-    variables: { id },
-  });
-
-  if (error) console.log(error);
+  const { loading, data } = useQueryById<Book>('book', BOOK_QUERY);
 
   return {
     isLoadingBookResults: loading,

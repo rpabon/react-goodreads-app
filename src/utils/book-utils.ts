@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
-import { getBooksWithPhoto } from '../../utils/getBooksWithPhoto';
-import { Book } from '../../typings/Book';
+import { getBooksWithPhoto } from './getBooksWithPhoto';
+import { Book } from '../typings/Book';
+import { BookInfo } from '../typings/BookInfo';
 
 const BOOK_WIDTH = 125;
 
@@ -17,9 +18,8 @@ export function getBookWidth(): CSSProperties {
   };
 }
 
-export function getBookTitle(book: Book): string {
+export function getBookTitle(book: Book | BookInfo, maxChars = 22): string {
   const title = book.title.replace(/ *\([^)]*\) */g, '');
-  const maxChar = 22;
 
-  return title.length >= maxChar ? `${title.slice(0, maxChar)}...` : title;
+  return title.length >= maxChars ? `${title.slice(0, maxChars)}...` : title;
 }

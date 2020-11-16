@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Book } from '../../typings/Book';
-import { getBooksWithPhoto } from '../../utils/getBooksWithPhoto';
-import { getWrapperWidth, getBookWidth, getBookTitle } from './utils';
-import css from './BookCarousel.module.css';
+import { Book } from '../typings/Book';
+import { getBooksWithPhoto } from '../utils/getBooksWithPhoto';
+import {
+  getWrapperWidth,
+  getBookWidth,
+  getBookTitle,
+} from '../utils/book-utils';
+import css from '../styles/BookCarousel.module.css';
 
 export function BookCarousel({ books, label }: BookCarouselProps) {
   if (!books || !books.length) return null;

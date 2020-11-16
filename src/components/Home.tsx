@@ -1,6 +1,6 @@
 import React from 'react';
-import { SearchResultsAPI } from '../../typings/SearchResultsAPI';
-import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
+import { SearchResultsAPI } from '../typings/SearchResultsAPI';
+import { SearchResultsList } from './SearchResultsList';
 
 export function Home({
   searchResults,

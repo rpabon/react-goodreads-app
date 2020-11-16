@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useLazyQuery } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { BookInfo } from '../../typings/BookInfo';
-import { SearchResultsAPI } from '../../typings/SearchResultsAPI';
+import { BookInfo } from '../typings/BookInfo';
+import { SearchResultsAPI } from '../typings/SearchResultsAPI';
 
 const DEFAULT_Q = 'tolkien';
 

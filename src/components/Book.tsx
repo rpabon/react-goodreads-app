@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { useBook } from './useBook';
-import { BookCarousel } from '../BookCarousel/BookCarousel';
-import css from './Book.module.css';
+import { useBook } from '../hooks/useBook';
+import { BookCarousel } from './BookCarousel';
+import { LoadingOverlay } from './LoadingOverlay';
+import css from '../styles/Book.module.css';
 
-export function Book(): JSX.Element {
+export function Book() {
   const { book, isLoadingBookResults } = useBook();
 
   return (
     <Fragment>
-      <div className="px-4">
-        {isLoadingBookResults && <h1>Loading...</h1>}
+      <LoadingOverlay loading={isLoadingBookResults} />
 
+      <div className="px-4">
         <div className="is-flex">
           <img src={book.image_url} alt={book.title} />
 

@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react';
-import { useAuthor } from './useAuthor';
-import { BookCarousel } from '../BookCarousel/BookCarousel';
+import { useAuthor } from '../hooks/useAuthor';
+import { BookCarousel } from './BookCarousel';
+import { LoadingOverlay } from './LoadingOverlay';
 
-export function Author(): JSX.Element {
+export function Author() {
   const { author, isLoadingAuthorResults } = useAuthor();
 
   return (
     <Fragment>
-      <div className="px-4">
-        {isLoadingAuthorResults && <h1>Loading...</h1>}
+      <LoadingOverlay loading={isLoadingAuthorResults} />
 
+      <div className="px-4">
         <div className="is-flex">
           <img src={author.image_url} alt={author.name} />
 
