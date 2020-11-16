@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { BookInfo } from '../../typings/BookInfo';
 
 export const SearchResultsList: FC<SearchResultsListProps> = ({
@@ -13,7 +14,7 @@ export const SearchResultsList: FC<SearchResultsListProps> = ({
         key={book.id}
         className="column is-half-tablet is-one-third-widescreen"
       >
-        <a className="box is-radiusless" href="/">
+        <Link className="box is-radiusless" to={`/book/${book.id}`}>
           <article className="media">
             <div className="media-left">
               <figure className="image">
@@ -24,7 +25,10 @@ export const SearchResultsList: FC<SearchResultsListProps> = ({
             <div className="media-content">
               <div className="content">
                 <p>
-                  <strong className="title is-5">{book.title}</strong>
+                  <strong
+                    className="title is-5"
+                    dangerouslySetInnerHTML={{ __html: book.title }}
+                  />
                   <br />
                   <span>{book.author}</span>
                   <br />
@@ -33,7 +37,7 @@ export const SearchResultsList: FC<SearchResultsListProps> = ({
               </div>
             </div>
           </article>
-        </a>
+        </Link>
       </div>
     ))}
   </div>

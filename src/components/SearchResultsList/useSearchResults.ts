@@ -1,7 +1,8 @@
-import { gql } from 'apollo-boost';
 import { useEffect } from 'react';
 import { useLazyQuery } from 'react-apollo';
+import { gql } from 'apollo-boost';
 import { BookInfo } from '../../typings/BookInfo';
+import { SearchResultsAPI } from '../../typings/SearchResultsAPI';
 
 const DEFAULT_Q = 'tolkien';
 
@@ -17,7 +18,7 @@ const SEARCH_TERM_QUERY = gql`
   }
 `;
 
-export function useSearchResults() {
+export function useSearchResults(): SearchResultsAPI {
   const [getResults, { loading, data }] = useLazyQuery<{
     search: BookInfo[];
   }>(SEARCH_TERM_QUERY);

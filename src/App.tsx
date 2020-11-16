@@ -1,27 +1,25 @@
-import React, { Fragment } from 'react';
-import { Header } from './components/Header/Header';
-import { SearchResultsList } from './components/SearchResultsList/SearchResultsList';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSearchResults } from './components/SearchResultsList/useSearchResults';
+import { Home } from './components/Home/Home';
+import { Book } from './components/Book/Book';
 import 'bulma/css/bulma.css';
 import './App.css';
 
 function App() {
-  const {
-    searchResults,
-    isLoadingSearchResults,
-    getSearchResults,
-  } = useSearchResults();
+  const searchResultsAPI = useSearchResults();
 
   return (
-    <Fragment>
-      <Header onTermChange={getSearchResults} />
-      <div className="container py-5">
-        <SearchResultsList
-          searchResults={searchResults}
-          isLoading={isLoadingSearchResults}
-        />
-      </div>
-    </Fragment>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home {...searchResultsAPI} />
+        </Route>
+        <Route path="/book/:id">
+          <Book getSearchResults={searchResultsAPI.getSearchResults} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

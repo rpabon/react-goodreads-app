@@ -1,7 +1,9 @@
 import React, { FC, Fragment, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 export const Header: FC<HeaderProps> = ({ onTermChange }) => {
   const [inputValue, setInputValue] = useState('');
+  const history = useHistory();
 
   return (
     <Fragment>
@@ -11,12 +13,12 @@ export const Header: FC<HeaderProps> = ({ onTermChange }) => {
         aria-label="main navigation"
       >
         <div className="container px-4">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="navbar-brand is-size-3 has-text-weight-bold has-text-white"
           >
             Discover Books
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -28,7 +30,10 @@ export const Header: FC<HeaderProps> = ({ onTermChange }) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={(e) => {
-            if (e.key === 'Enter') onTermChange(inputValue);
+            if (e.key === 'Enter') {
+              onTermChange(inputValue);
+              history.push('/');
+            }
           }}
         />
 

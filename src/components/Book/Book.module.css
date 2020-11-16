@@ -1,0 +1,7 @@
+.author-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: top center;
+}
