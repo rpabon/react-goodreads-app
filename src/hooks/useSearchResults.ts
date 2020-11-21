@@ -13,7 +13,8 @@ const SEARCH_TERM_QUERY = gql`
       title
       author
       year
-      url_small
+      image_url
+      small_image_url
     }
   }
 `;

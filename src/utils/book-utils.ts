@@ -1,10 +1,14 @@
 import { CSSProperties } from 'react';
-import { getBooksWithPhoto } from './getBooksWithPhoto';
 import { Book } from '../typings/Book';
 import { BookInfo } from '../typings/BookInfo';
 
-const BOOK_WIDTH = 125;
+export function getBooksWithPhoto<T extends Book | BookInfo>(
+  books: T[] = []
+): T[] {
+  return books.filter((book) => !book.image_url.includes('nophoto'));
+}
 
+const BOOK_WIDTH = 125;
 export function getWrapperWidth(books: Book[]): CSSProperties {
   return {
     width: `${getBooksWithPhoto(books).length * BOOK_WIDTH}px`,

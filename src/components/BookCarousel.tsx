@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Book } from '../typings/Book';
-import { getBooksWithPhoto } from '../utils/getBooksWithPhoto';
 import {
+  getBooksWithPhoto,
   getWrapperWidth,
   getBookWidth,
   getBookTitle,
