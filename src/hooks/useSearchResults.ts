@@ -29,6 +29,7 @@ export function useSearchResults(): SearchResultsAPI {
     getResults({ variables: { q } });
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => void getSearchResults(DEFAULT_Q), []);
 
   return {

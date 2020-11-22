@@ -1,4 +1,4 @@
-export default {
+export const book = {
   id: 77566,
   author: 'Dan Simmons',
   author_id: 2687,

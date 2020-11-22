@@ -3,10 +3,14 @@ import { Card, Image, Row, Col } from 'antd';
 import { useAuthor } from '../hooks/useAuthor';
 import { BookCarousel } from './BookCarousel';
 import { AuthorData } from './AuthorData';
-// import { LoadingOverlay } from './LoadingOverlay';
+import { LoadingOverlay } from './LoadingOverlay';
 
 export function Author() {
   const { author, isLoadingAuthorResults } = useAuthor();
+
+  if (isLoadingAuthorResults) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <Fragment>

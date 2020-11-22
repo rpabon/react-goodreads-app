@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
+import { Card, Avatar, Row, Col, Image, Rate } from 'antd';
 import { Link } from 'react-router-dom';
-import { Card, Avatar, Row, Col, Image, Typography, Rate } from 'antd';
 import { useBook } from '../hooks/useBook';
 import { BookCarousel } from './BookCarousel';
-// import { LoadingOverlay } from './LoadingOverlay';
-import css from '../styles/Book.module.css';
+import { LoadingOverlay } from './LoadingOverlay';
+// import css from '../styles/Book.module.css';
 
 export function Book() {
   const { book, isLoadingBookResults } = useBook();
+
+  if (isLoadingBookResults) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <Fragment>

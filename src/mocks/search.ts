@@ -1,4 +1,4 @@
-export default {
+export const search = {
   search: [
     {
       id: 77566,

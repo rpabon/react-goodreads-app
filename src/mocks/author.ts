@@ -1,4 +1,4 @@
-export default {
+export const author = {
   name: 'Dan Simmons',
   image_url: 'https://images.gr-assets.com/authors/1427999015p5/2687.jpg',
   hometown: 'Peoria, Illinois',

@@ -1,11 +1,11 @@
 import React from 'react';
+import { Spin } from 'antd';
 import css from '../styles/LoadingOverlay.module.css';
 
-export function LoadingOverlay({ loading }: { loading: boolean }) {
+export function LoadingOverlay() {
   return (
-    <div
-      className={css['loading-wrapper']}
-      style={{ display: loading ? 'block' : 'none' }}
-    />
+    <div className={css.loading}>
+      <Spin size="large" className={css.spinner} />
+    </div>
   );
 }

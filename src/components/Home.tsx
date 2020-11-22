@@ -3,16 +3,13 @@ import { Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import { SearchResultsAPI } from '../typings/SearchResultsAPI';
 import { getBooksWithPhoto } from '../utils/book-utils';
-// import { LoadingOverlay } from './LoadingOverlay';
+import { LoadingOverlay } from './LoadingOverlay';
 
-export function Home({
-  searchResults,
-  isLoadingSearchResults,
-}: Omit<SearchResultsAPI, 'getSearchResults'>) {
+export function Home({ searchResults, isLoadingSearchResults }: HomeProps) {
   const books = getBooksWithPhoto(searchResults);
 
-  if (!books.length) {
-    return null;
+  if (isLoadingSearchResults) {
+    return <LoadingOverlay />;
   }
 
   return (
@@ -43,3 +40,5 @@ export function Home({
     </Row>
   );
 }
+
+interface HomeProps extends Omit<SearchResultsAPI, 'getSearchResults'> {}
