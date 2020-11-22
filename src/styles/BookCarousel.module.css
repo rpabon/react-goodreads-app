@@ -1,12 +1,13 @@
-.wrapper {
+.container {
   position: sticky;
   bottom: 0;
   width: 100%;
-  overflow-x: auto;
+  padding: 16px;
   border: 1px solid lightgray;
+  background-color: #ffffff;
 }
 
-.wrapper::after {
+.container::after {
   content: '';
   z-index: 100;
   position: absolute;
@@ -18,14 +19,23 @@
   background: linear-gradient(to left, #ffffff 0%, transparent 100%);
 }
 
-.book-image {
+.wrapper {
+  overflow-x: auto;
+}
+
+.wrapper-inner {
+  display: flex;
+}
+
+.book {
   display: flex;
   justify-content: center;
   align-content: center;
+  padding-right: 8px;
   height: 152px;
+  background-color: lightgray;
 }
 
-.book-image > img {
-  align-self: center;
-  max-height: 100%;
+.book > img {
+  width: auto;
 }

@@ -7,8 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({
-  // uri: 'https://polar-wave-49029.herokuapp.com/graphql',
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://polar-wave-49029.herokuapp.com/graphql',
+  // uri: 'http://localhost:5000/graphql',
 });
 
 ReactDOM.render(

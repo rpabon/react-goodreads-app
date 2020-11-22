@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, Avatar, Row, Col, Image, Typography, Rate } from 'antd';
 import { useBook } from '../hooks/useBook';
 import { BookCarousel } from './BookCarousel';
-import { LoadingOverlay } from './LoadingOverlay';
+// import { LoadingOverlay } from './LoadingOverlay';
 import css from '../styles/Book.module.css';
 
 export function Book() {
@@ -10,38 +11,23 @@ export function Book() {
 
   return (
     <Fragment>
-      <LoadingOverlay loading={isLoadingBookResults} />
-
-      <div className="px-4">
-        <div className="is-flex">
-          <img src={book.image_url} alt={book.title} />
-
-          <div className="ml-5">
-            <h2
-              className="title is-3 has-text-weight-bold"
-              dangerouslySetInnerHTML={{ __html: book.title }}
-            />
-            <p className="subtitle is-5 mb-1">{book.year}</p>
-            <p className="subtitle is-6">{book.rating}</p>
-          </div>
-        </div>
-
-        <Link
-          className="is-flex is-align-items-center mt-5"
-          to={`/author/${book.author_id}`}
-        >
-          <div
-            style={{ backgroundImage: `url(${book.author_image_url})` }}
-            className={`${css['author-image']} mr-4`}
-          />
-          <p className="subtitle is-5 has-text-weight-bold">{book.author}</p>
-        </Link>
-
-        <div
-          className="mt-5 is-size-5"
-          dangerouslySetInnerHTML={{ __html: book.description }}
-        />
-      </div>
+      <Card>
+        <Row gutter={16}>
+          <Col xs={24} sm={7}>
+            <Image width={200} src={book.image_url} alt={book.title} />
+          </Col>
+          <Col xs={24} sm={17}>
+            <h1 dangerouslySetInnerHTML={{ __html: book.title }} />
+            <p>{book.year}</p>
+            <Link to={`/author/${book.author_id}`}>
+              <Avatar size={64} src={book.author_image_url} alt={book.author} />
+              <p>{book.author}</p>
+            </Link>
+            <Rate value={book.rating} allowHalf disabled /> ({book.rating})
+          </Col>
+        </Row>
+        <p dangerouslySetInnerHTML={{ __html: book.description }} />
+      </Card>
 
       <BookCarousel books={book.similar_books} label="Similar Books" />
     </Fragment>

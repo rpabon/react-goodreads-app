@@ -1,35 +1,28 @@
 import React, { Fragment } from 'react';
+import { Card, Image, Row, Col } from 'antd';
 import { useAuthor } from '../hooks/useAuthor';
 import { BookCarousel } from './BookCarousel';
-import { LoadingOverlay } from './LoadingOverlay';
+import { AuthorData } from './AuthorData';
+// import { LoadingOverlay } from './LoadingOverlay';
 
 export function Author() {
   const { author, isLoadingAuthorResults } = useAuthor();
 
   return (
     <Fragment>
-      <LoadingOverlay loading={isLoadingAuthorResults} />
+      <Card>
+        <Row gutter={16}>
+          <Col xs={24} sm={7}>
+            <Image src={author.image_url} alt={author.name} width={200} />
+          </Col>
+          <Col xs={24} sm={17}>
+            <h2 dangerouslySetInnerHTML={{ __html: author.name }} />
+            <AuthorData {...author} />
+          </Col>
+        </Row>
 
-      <div className="px-4">
-        <div className="is-flex">
-          <img src={author.image_url} alt={author.name} />
-
-          <div className="ml-5">
-            <h2
-              className="title is-3 has-text-weight-bold"
-              dangerouslySetInnerHTML={{ __html: author.name }}
-            />
-            <p className="subtitle is-5 mb-1">{author.hometown}</p>
-            <p className="subtitle is-6">{author.born_at}</p>
-            <p className="subtitle is-6">{author.died_at}</p>
-          </div>
-        </div>
-
-        <div
-          className="mt-5 is-size-5"
-          dangerouslySetInnerHTML={{ __html: author.about }}
-        />
-      </div>
+        <p dangerouslySetInnerHTML={{ __html: author.about }} />
+      </Card>
 
       <BookCarousel books={author.books} label="Books" />
     </Fragment>

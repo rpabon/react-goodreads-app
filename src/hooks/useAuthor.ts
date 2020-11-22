@@ -2,6 +2,7 @@ import { gql } from 'apollo-boost';
 import { Author } from '../typings/Author';
 import { AuthorResultsAPI } from '../typings/AuthorResultsAPI';
 import { useQueryById } from './useQueryById';
+import author from '../mocks/author';
 
 const AUTHOR_QUERY = gql`
   query AuthorQuery($id: Int) {
@@ -23,10 +24,12 @@ const AUTHOR_QUERY = gql`
 `;
 
 export function useAuthor(): AuthorResultsAPI {
-  const { loading, data } = useQueryById<Author>('author', AUTHOR_QUERY);
+  // const { loading, data } = useQueryById<Author>('author', AUTHOR_QUERY);
 
   return {
-    isLoadingAuthorResults: loading,
-    author: (data && data.author) || {} as Author,
+    // isLoadingAuthorResults: loading,
+    // author: (data && data.author) || {} as Author,
+    isLoadingAuthorResults: false,
+    author: author as Author,
   };
 }
