@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 104px;
+  padding: 0 8px 8px 8px;
+}
+
+.title > h2 {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 64px;
+    flex-wrap: nowrap;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .title > h2 {
+    width: 248px;
+  }
+}

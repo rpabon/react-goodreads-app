@@ -1,7 +1,33 @@
-.author-image {
-  width: 64px;
-  height: 64px;
-  border-radius: 100%;
-  background-size: cover;
-  background-position: top center;
+.body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.image {
+  width: 150px;
+  margin-right: 24px;
+}
+
+.title:global(.ant-typography) {
+  margin-bottom: 0;
+}
+
+.avatar {
+  margin-right: 8px;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .info {
+    width: auto;
+    margin-top: 0;
+  }
 }

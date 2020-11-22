@@ -14,9 +14,7 @@ function App() {
   return (
     <Layout>
       <BrowserRouter>
-        <Layout.Header>
-          <NavBar onTermChange={getSearchResults} />
-        </Layout.Header>
+        <NavBar onTermChange={getSearchResults} />
 
         <Layout.Content>
           <Switch>

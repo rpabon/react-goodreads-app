@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'antd';
+import { Image, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { Book } from '../typings/Book';
 import {
@@ -15,7 +15,7 @@ export function BookCarousel({ books, label }: BookCarouselProps) {
 
   return (
     <div className={css.container}>
-      {label && <h3>{label}:</h3>}
+      {label && <Typography.Title level={4}>{label}:</Typography.Title>}
 
       <div className={css.wrapper}>
         <div className={css['wrapper-inner']} style={getWrapperWidth(books)}>
@@ -26,14 +26,18 @@ export function BookCarousel({ books, label }: BookCarouselProps) {
                 alt={book.title}
                 className={css.book}
               />
-              <p>
-                <span
-                  title={book.title}
+              <Typography.Paragraph
+                className={css.title}
+                ellipsis={{ rows: 2 }}
+                title={book.title}
+              >
+                <strong
                   dangerouslySetInnerHTML={{ __html: getBookTitle(book) }}
                 />
-                <br />
-                <span>{book.year}</span>
-              </p>
+              </Typography.Paragraph>
+              {book.year > 0 && (
+                <Typography.Paragraph>{book.year}</Typography.Paragraph>
+              )}
             </Link>
           ))}
         </div>

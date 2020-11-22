@@ -31,11 +31,16 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  padding-right: 8px;
   height: 152px;
-  background-color: lightgray;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background-color: #eceff3;
 }
 
 .book > img {
   width: auto;
+}
+
+.title:global(.ant-typography) {
+  margin-bottom: 4px;
 }

@@ -8,6 +8,7 @@ const BOOK_QUERY = gql`
   query BookQuery($id: Int) {
     book(id: $id) {
       title
+      year
       image_url
       rating
       author

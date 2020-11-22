@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import { Typography } from 'antd';
 import { Author } from '../typings/Author';
 
 export function AuthorData({ hometown, born_at, died_at }: Author) {
   return (
-    <p>
+    <Typography.Paragraph>
       {(born_at || hometown) && 'Born '}
       {born_at && `on ${born_at} `}
       {hometown && `in ${hometown}.`}
@@ -13,6 +14,6 @@ export function AuthorData({ hometown, born_at, died_at }: Author) {
           Died on {died_at}.
         </Fragment>
       )}
-    </p>
+    </Typography.Paragraph>
   );
 }

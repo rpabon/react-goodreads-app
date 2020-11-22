@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Row, Col, Input, Typography } from 'antd';
+import { Input, Layout, Typography } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
+import css from '../styles/NavBar.module.css';
 
 export function NavBar({ onTermChange }: NavBarProps) {
   const [inputValue, setInputValue] = useState('');
@@ -14,27 +15,21 @@ export function NavBar({ onTermChange }: NavBarProps) {
   }
 
   return (
-    <Row gutter={16} align="middle">
-      <Col xs={24} md={10}>
-        <Link to="/">
-          <Typography.Title style={{ color: 'white' }}>
-            Discover Books
-          </Typography.Title>
-        </Link>
-      </Col>
+    <Layout.Header className={css.navbar}>
+      <Link to="/" className={css.title}>
+        <Typography.Title level={2}>Discover Books</Typography.Title>
+      </Link>
 
-      <Col xs={24} md={14}>
-        <Input.Search
-          allowClear
-          size="large"
-          placeholder="Find books..."
-          enterButton="Go!"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onSearch={onSearch}
-        />
-      </Col>
-    </Row>
+      <Input.Search
+        allowClear
+        size="large"
+        placeholder="Find books..."
+        enterButton="Go!"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onSearch={onSearch}
+      />
+    </Layout.Header>
   );
 }
 
