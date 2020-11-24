@@ -26,11 +26,12 @@ export function Home({ searchResults, isLoadingSearchResults }: HomeProps) {
                   className={css.image}
                 />
 
-                <div>
+                <div className={css['card-info']}>
                   <Typography.Title
                     level={4}
                     ellipsis={{ rows: 2 }}
                     title={book.title}
+                    className={css.title}
                   >
                     <span dangerouslySetInnerHTML={{ __html: book.title }} />
                   </Typography.Title>

@@ -15,20 +15,22 @@ export function NavBar({ onTermChange }: NavBarProps) {
   }
 
   return (
-    <Layout.Header className={css.navbar}>
-      <Link to="/" className={css.title}>
-        <Typography.Title level={2}>Discover Books</Typography.Title>
-      </Link>
+    <Layout.Header>
+      <div className={`app-container ${css.navbar}`}>
+        <Link to="/" className={css.title}>
+          <Typography.Title level={2}>Discover Books</Typography.Title>
+        </Link>
 
-      <Input.Search
-        allowClear
-        size="large"
-        placeholder="Find books..."
-        enterButton="Go!"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onSearch={onSearch}
-      />
+        <Input.Search
+          allowClear
+          size="large"
+          placeholder="Find books..."
+          enterButton="Go!"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onSearch={onSearch}
+        />
+      </div>
     </Layout.Header>
   );
 }

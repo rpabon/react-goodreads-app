@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <NavBar onTermChange={getSearchResults} />
 
-        <Layout.Content>
+        <Layout.Content className="app-container app-layout-content">
           <Switch>
             <Route exact path="/">
               <Home {...restSearchResultsAPI} />
