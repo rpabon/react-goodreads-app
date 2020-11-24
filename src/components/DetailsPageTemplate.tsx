@@ -20,6 +20,7 @@ export function DetailsPageTemplate(props: DetailsPageTemplateProps) {
             <Typography.Title level={2} className={css.title}>
               <span dangerouslySetInnerHTML={{ __html: props.title }} />
             </Typography.Title>
+            {props.subtitleBlock}
           </div>
         </div>
 

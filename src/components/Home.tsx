@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col, Image, Row, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { SearchResultsAPI } from '../typings/SearchResultsAPI';
-import { getBooksWithPhoto } from '../utils/book-utils';
+import { getBooksWithPhoto, getBookTitle } from '../utils/book-utils';
 import { LoadingOverlay } from './LoadingOverlay';
 import css from '../styles/Home.module.css';
 
@@ -33,7 +33,9 @@ export function Home({ searchResults, isLoadingSearchResults }: HomeProps) {
                     title={book.title}
                     className={css.title}
                   >
-                    <span dangerouslySetInnerHTML={{ __html: book.title }} />
+                    <span
+                      dangerouslySetInnerHTML={{ __html: getBookTitle(book) }}
+                    />
                   </Typography.Title>
                   <Typography.Paragraph>
                     {book.author}

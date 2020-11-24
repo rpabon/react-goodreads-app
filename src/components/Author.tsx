@@ -19,20 +19,9 @@ export function Author() {
       image_url={author.image_url}
       description={author.about}
       bookList={author.books}
-      subtitleBlock={<SubtitleInfo {...author} />}
+      subtitleBlock={<AuthorData {...author} />}
       bookListLabel={getLabel(author)}
     />
-  );
-}
-
-function SubtitleInfo(author: IAuthor) {
-  return (
-    <Fragment>
-      <Typography.Title level={2} className={css.title}>
-        <span dangerouslySetInnerHTML={{ __html: author.name }} />
-      </Typography.Title>
-      <AuthorData {...author} />
-    </Fragment>
   );
 }
 

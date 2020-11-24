@@ -22,8 +22,6 @@ export function getBookWidth(): CSSProperties {
   };
 }
 
-export function getBookTitle(book: Book | BookInfo, maxChars = 22): string {
-  const title = book.title.replace(/ *\([^)]*\) */g, '');
-
-  return title.length >= maxChars ? `${title.slice(0, maxChars)}...` : title;
+export function getBookTitle(book: Book | BookInfo): string {
+  return book.title.replace(/ *\([^)]*\) */g, '');
 }

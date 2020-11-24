@@ -3,6 +3,7 @@ import { Avatar, Rate, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { Book as IBook } from '../typings/Book';
 import { useBook } from '../hooks/useBook';
+import { getBookTitle } from '../utils/book-utils';
 import { LoadingOverlay } from './LoadingOverlay';
 import { DetailsPageTemplate } from './DetailsPageTemplate';
 import css from '../styles/DetailsPageTemplate.module.css';
@@ -14,14 +15,16 @@ export function Book() {
     return <LoadingOverlay />;
   }
 
+  const title = getBookTitle(book);
+
   return (
     <DetailsPageTemplate
-      title={book.title}
+      title={title}
       image_url={book.image_url}
       description={book.description}
       subtitleBlock={<SubtitleInfo {...book} />}
       bookList={book.similar_books}
-      bookListLabel={`Similar to ${book.title}`}
+      bookListLabel={`Similar to ${title}`}
     />
   );
 }
