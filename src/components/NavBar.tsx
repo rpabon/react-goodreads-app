@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Input, Layout, Typography } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
+import { useInitialSearch } from '../hooks/useInitialSearch';
 import css from '../styles/NavBar.module.css';
 
 export function NavBar({ onTermChange }: NavBarProps) {
   const [inputValue, setInputValue] = useState('');
   const history = useHistory();
+  useInitialSearch(inputValue, onTermChange);
 
   function onSearch() {
     if (inputValue) {

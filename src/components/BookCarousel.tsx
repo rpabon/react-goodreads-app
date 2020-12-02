@@ -20,7 +20,7 @@ export function BookCarousel({ books, label }: BookCarouselProps) {
       <div className={css.wrapper}>
         <div className={css['wrapper-inner']} style={getWrapperWidth(books)}>
           {getBooksWithPhoto(books).map((book) => (
-            <Link to={`/book/${book.id}`} style={getBookWidth()}>
+            <Link key={book.id} to={`/book/${book.id}`} style={getBookWidth()}>
               <Image
                 src={book.image_url}
                 alt={book.title}

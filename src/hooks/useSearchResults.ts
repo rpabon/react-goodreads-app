@@ -1,10 +1,7 @@
-import { useEffect } from 'react';
 import { useLazyQuery } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { BookInfo } from '../typings/BookInfo';
 import { SearchResultsAPI } from '../typings/SearchResultsAPI';
-
-const DEFAULT_Q = 'tolkien';
 
 const SEARCH_TERM_QUERY = gql`
   query SearchTermQuery($q: String) {
@@ -25,16 +22,11 @@ export function useSearchResults(): SearchResultsAPI {
   }>(SEARCH_TERM_QUERY);
   const searchResults = (data && data.search) || [];
 
-  function getSearchResults(q: string) {
-    getResults({ variables: { q } });
-  }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => void getSearchResults(DEFAULT_Q), []);
-
   return {
     searchResults,
-    getSearchResults,
     isLoadingSearchResults: loading,
+    getSearchResults(q: string) {
+      getResults({ variables: { q } });
+    },
   };
 }

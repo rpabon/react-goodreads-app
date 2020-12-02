@@ -4,7 +4,6 @@ import { Author as IAuthor } from '../typings/Author';
 import { useAuthor } from '../hooks/useAuthor';
 import { LoadingOverlay } from './LoadingOverlay';
 import { DetailsPageTemplate } from './DetailsPageTemplate';
-import css from '../styles/DetailsPageTemplate.module.css';
 
 export function Author() {
   const { author, isLoadingAuthorResults } = useAuthor();
